@@ -7,7 +7,7 @@
 # build : docker build -t treasureboat/ssh:0.3 .
 # run : docker run -d -P --name tbSSH treasureboat/ssh:0.3
 
-FROM treasureboat/centos6:0.3
+FROM treasureboat/centos6:latest
 MAINTAINER treasureboat <ken@ksroom.com>
 
 # this is the Open SSH Server
