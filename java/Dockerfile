@@ -7,7 +7,7 @@
 # build : docker build -t treasureboat/java:0.3 .
 # run : docker run -d -P --name tbJava8 treasureboat/java:0.3
 
-FROM treasureboat/ssh:0.3
+FROM treasureboat/ssh:latest
 MAINTAINER treasureboat <ken@ksroom.com>
 
 # download Java8 
