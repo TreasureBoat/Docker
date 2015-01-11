@@ -11,9 +11,9 @@ FROM treasureboat/ssh:latest
 MAINTAINER treasureboat <ken@ksroom.com>
 
 # download Java8 
-RUN wget -O /tmp/jdk-8u25-linux-x64.rpm 'https://dl.dropboxusercontent.com/u/1548210/TB/Docker/jdk-8u25-linux-x64.rpm'
+RUN wget -q -O /tmp/jdk-8u25-linux-x64.rpm 'https://dl.dropboxusercontent.com/u/1548210/TB/Docker/jdk-8u25-linux-x64.rpm'
 RUN rpm -ivh /tmp/jdk-8u25-linux-x64.rpm
-RUN rm -f jdk-8u25-linux-x64.rpm
+RUN rm -f /tmp/jdk-8u25-linux-x64.rpm
 
 # export JDK_VERSION=8u25
 ENV JDK_VERSION 8u25
