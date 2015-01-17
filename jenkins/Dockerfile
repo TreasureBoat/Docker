@@ -6,9 +6,8 @@
 #
 # service jenkins start/stop/restart
 #
-# build : docker build -t treasureboat/jenkins:0.5 .
-# run development : docker run -d -P --name tbJenkins treasureboat/jenkins:0.5
-# run deploy : docker run -d -p 8080:8080 --name tbJenkins -it treasureboat/jenkins:0.5
+# build : docker build -t treasureboat/jenkins:0.6 .
+# run : docker run -d -P -p 8080:8080 --name tbJenkins -it treasureboat/jenkins:0.6
 
 FROM treasureboat/java:latest
 MAINTAINER treasureboat <office@treasureboat.org>
@@ -23,9 +22,12 @@ MAINTAINER treasureboat <office@treasureboat.org>
 RUN wget -q -O /tmp/jenkins.rpm 'http://pkg.jenkins-ci.org/redhat/jenkins-1.596-1.1.noarch.rpm'
 RUN rpm -ivh /tmp/jenkins.rpm
 
-EXPOSE 8080 22
+# add boot script
+RUN printf 'service jenkins start\n' >> /opt/boot.sh
+RUN printf 'sleep 5\n' >> /opt/boot.sh
+RUN chmod u+rwx /opt/boot.sh
+
+EXPOSE 22 8080
 
 VOLUME ["/var/lib/jenkins", "/var/log/jenkins"]
-
-# Kicking in
-ENTRYPOINT service jenkins start; sleep 5; tail -f /var/log/jenkins/jenkins.log
+do
