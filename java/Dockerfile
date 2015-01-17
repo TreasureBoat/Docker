@@ -4,8 +4,8 @@
 #
 # Oracel Java 8u25 on CentOS 6.6
 #
-# build : docker build -t treasureboat/java:0.5 .
-# run : docker run -d -P --name tbJava8 treasureboat/java:0.5
+# build : docker build -t treasureboat/java:0.6 .
+# run : docker run -d -P --name tbJava8 treasureboat/java:0.6
 
 FROM treasureboat/ssh:latest
 MAINTAINER treasureboat <office@treasureboat.org>
