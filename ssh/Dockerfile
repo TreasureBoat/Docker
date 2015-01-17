@@ -6,8 +6,8 @@
 # supervisor service 
 #     on CentOS 6.6
 #
-# build : docker build -t treasureboat/ssh:0.5 .
-# run : docker run -d -P --name tbSSH treasureboat/ssh:0.5
+# build : docker build -t treasureboat/ssh:0.6 .
+# run : docker run -d -P --name tbSSH treasureboat/ssh:0.6
 
 FROM treasureboat/centos6:latest
 MAINTAINER treasureboat <office@treasureboat.org>
@@ -21,6 +21,7 @@ RUN easy_install supervisor
 RUN mkdir -p /var/log/supervisor
 # Directory for configuration file
 RUN mkdir -p /etc/supervisor
+RUN mkdir -p /etc/supervisor/conf.d
 
 # add the supervisor configuration file
 RUN printf '[supervisord]\n' > /etc/supervisor/supervisord.conf
@@ -32,6 +33,8 @@ RUN printf '\n[include]\n' >> /etc/supervisor/supervisord.conf
 RUN printf 'files = /etc/supervisor/conf.d/*.conf\n' >> /etc/supervisor/supervisord.conf
 RUN printf '\n[program:sshd]\n' >> /etc/supervisor/supervisord.conf
 RUN printf 'command = /usr/sbin/sshd -D\n' >> /etc/supervisor/supervisord.conf
+RUN printf '\n[program:setup]\n' >> /etc/supervisor/supervisord.conf
+RUN printf 'command = /opt/boot.sh\n' >> /etc/supervisor/supervisord.conf
 
 # install sshd
 RUN yum install -y openssh-server openssh-clients passwd
@@ -43,6 +46,13 @@ RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 #change root password to 123456
 RUN echo 'root:123456' | chpasswd
+
+# add boot script
+RUN mkdir -p /opt
+RUN touch /opt/boot.sh
+RUN printf '#!/bin/bash\n\n' >> /opt/boot.sh
+RUN printf 'sleep 5\n' >> /opt/boot.sh
+RUN chmod u+rwx /opt/boot.sh
 
 EXPOSE 22
 
