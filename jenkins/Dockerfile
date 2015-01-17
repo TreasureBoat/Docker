@@ -30,4 +30,3 @@ RUN chmod u+rwx /opt/boot.sh
 EXPOSE 22 8080
 
 VOLUME ["/var/lib/jenkins", "/var/log/jenkins"]
-do
