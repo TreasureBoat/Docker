@@ -10,7 +10,7 @@
 # run : docker run -d -P --name tbSSH treasureboat/ssh:0.5
 
 FROM treasureboat/centos6:latest
-MAINTAINER treasureboat <ken@ksroom.com>
+MAINTAINER treasureboat <office@treasureboat.org>
 
 # install easy_install
 RUN wget https://bootstrap.pypa.io/ez_setup.py -O - | python

@@ -8,7 +8,7 @@
 # run : docker run -d -P --name tbCentOS6 treasureboat/centos6:0.3
 
 FROM centos:6.6
-MAINTAINER treasureboat <ken@ksroom.com>
+MAINTAINER treasureboat <office@treasureboat.org>
 
 # address any potential security concerns. 
 RUN yum -y update && yum clean all

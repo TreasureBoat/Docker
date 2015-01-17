@@ -11,7 +11,7 @@
 # run deploy : docker run -d -p 8080:8080 --name tbJenkins -it treasureboat/jenkins:0.2
 
 FROM treasureboat/java:latest
-MAINTAINER treasureboat <ken@ksroom.com>
+MAINTAINER treasureboat <office@treasureboat.org>
 
 ##### download jenkins get latest and greatest
 #RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
