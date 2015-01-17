@@ -6,9 +6,9 @@
 #
 # service jenkins start/stop/restart
 #
-# build : docker build -t treasureboat/jenkins:0.2 .
-# run development : docker run -d -P --name tbJenkins treasureboat/jenkins:0.2
-# run deploy : docker run -d -p 8080:8080 --name tbJenkins -it treasureboat/jenkins:0.2
+# build : docker build -t treasureboat/jenkins:0.5 .
+# run development : docker run -d -P --name tbJenkins treasureboat/jenkins:0.5
+# run deploy : docker run -d -p 8080:8080 --name tbJenkins -it treasureboat/jenkins:0.5
 
 FROM treasureboat/java:latest
 MAINTAINER treasureboat <office@treasureboat.org>
